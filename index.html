@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Payment</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- should change .org to .com -->
+        <form action="https://www.tikokart.org/api-sanalpos/gateway/pay3d">
+            <div class="form__payment-methods">
+                <h1>Payment Method</h1>
+                <div class="payment-method">
+                    <input type="radio" name="credit-card" id="visa" checked>
+                    <label for="visa">
+                        <div class="visa">
+                            <img src="./Images/visa.svg" alt="visa">
+                        </div>
+                    </label>
+                </div>
+                <div class="payment-method">
+                    <input type="radio" name="credit-card" id="master">
+                    <label for="master">
+                        <div class="master-card">
+                            <img src="./Images/master.svg" alt="mastercard">
+                        </div>
+                    </label>
+                </div>          
+            </div>
+            <div class="form__card-no">
+                <label for="card-no">Card Number</label>
+                <input id="card-no" name="card-no" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" 
+                autocomplete="cc-number" maxlength="19" 
+                placeholder="xxxx xxxx xxxx xxxx" required>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
