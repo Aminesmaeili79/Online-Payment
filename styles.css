@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
-    --size-xl: 2.5rem;
-    --size-lg: 2rem;
-    --size-md: 1.5rem;
-    --size-sm: 1.25rem;
-    --size-xs: 1rem;
+    --size-xl: 5.8rem;
+    --size-lg: 3.2rem;
+    --size-md: 2.8rem;
+    --size-sm: 2rem;
+    --size-xs: 1.6rem;
 
     --primary-color: #f7f7f7;
+    --primary-color-op70: rgba(247, 247, 247, 0.7);
     --primary-color-dark: #222;
 
-    --img-bg-color: #eee;
-    --img-hover-bg-color: #ddd;
-    --img-active-bg-color: rgba(233, 233, 255, 0.637);
+    --img-bg-color: rgba(255, 255, 255, 0.1);
+    --img-hover-bg-color: rgba(255, 255, 255, 0.15);
+    --img-active-bg-color: rgba(255, 255, 255, 0.2);
 
-    --border-radius-default: 20px;
-    --bg-gradient: linear-gradient(270deg, rgba(8,0,145,1) 0%, rgba(0,0,255,1) 50%, rgba(0,163,196,1) 100%);
+    --border-radius-default: 1rem;
+    --bg-gradient: linear-gradient(30deg, rgba(0,0,0,1) 30%, rgb(50, 146, 255) 50%, rgba(0,0,0,1) 70%);
 }
 
 * {
@@ -23,30 +26,36 @@
     box-sizing: border-box;
 
     color: var(--primary-color);
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+}
+
+html {
+    font-size: 62.5%;
 }
 
 body {
-    font-size: 62.5%;
     min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
-    font-family: "Courier Prime", monospace;
+    padding: var(--size-xl) var(--size-xl);
     background: var(--bg-gradient);
-    background: url(./Images/bg-img.jpg);
-
-    background-size: cover;
-    background-position: center;
+    backdrop-filter: grayscale(10%) brightness(80%);
     
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+h1 {
+    font-size: var(--size-lg);
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: var(--size-xl);
+}
+
 .container {
-    /* width: 1000px; */
-    max-width: 1170px;
-    /* background-color: rgba(247, 247, 247, 0.35); */
+    max-width: 800px;
     border-radius: var(--border-radius-default);
-    margin: 0 auto;
     padding: var(--size-lg) var(--size-xl);
     box-shadow: 0 0 100px 5px rgba(0, 0, 0, 0.5);
 
@@ -56,46 +65,58 @@ body {
 }
 
 form {
-    width: 50%;
-
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: calc(var(--size-xl) * 2);
+    gap: calc(var(--size-xl));
 }
 
 form label {
-    font-size: var(--size-lg);
+    font-size: var(--size-sm);
     font-weight: 500;
     letter-spacing: 1px;
 }
 
 form input {
-    font-size: var(--size-md);
-    color: var(--primary-color-dark);
+    font-size: var(--size-lg);
+    color: var(--primary-color);
     width: 100%;
-    padding: var(--size-sm);
-    margin: var(--size-sm) 0;
+    padding-bottom: 4px;
     border: none;
-    border-radius: var(--border-radius-default);
-    background-color: var(--primary-color);
-    box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--primary-color-op70);
+    background-color: transparent;
 }
 
 form input::placeholder {
-    color: var(--primary-color-dark);
+    color: var(--primary-color-op70);
 }
 
 form input:focus {
     outline: none;
 }
 
+form button {
+    font-size: var(--size-sm);
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 1rem 2rem;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius-default);
+    background-color: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+form button:hover {
+    background-color: var(--primary-color);
+    color: var(--primary-color-dark);
+}
+
 .form__payment-methods {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
-    justify-items: center;
-    row-gap: var(--size-xl);
-    column-gap: calc(var(--size-xl) * 4);
+    display: flex;
+    gap: var(--size-xl);
 }
 
 .payment-method:nth-child(even) {
@@ -106,16 +127,9 @@ form input:focus {
     justify-self: start;
 }
 
-.form__payment-methods h1 {
-    font-size: var(--size-xl);
-    font-weight: 500;
-    letter-spacing: 1px;
-    grid-column: span 2;
-}
-
 .form__payment-methods img {
     width: 150px;
-    height: 150px;
+    height: 100px;
     background-color: var(--img-bg-color);
     border-radius: var(--border-radius-default);
     cursor: pointer;
@@ -125,7 +139,7 @@ form input:focus {
 .form__payment-methods img:hover {
     background-color: var(--img-hover-bg-color);
     transform: scale(1.075);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
 }
 
 .form__payment-methods .payment-method input {
@@ -134,13 +148,123 @@ form input:focus {
 
 .payment-method input:checked + label img {
     background-color: var(--img-active-bg-color);
-    border: 1px solid var(--img-bg-color);
     transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-.form__card-no {
+.form__input-field {
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 6px;
+}
+
+.form__input-fields {
+    width: 100%;
+    display: flex;
+    /* gap: var(--size-xl); */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    column-gap: var(--size-md);
+    justify-items: center;
+}
+
+.exp-wrapper {
+    position: relative;
+    width: 75%;
+    padding-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--primary-color-op70);
+}
+
+.exp-wrapper input {
+    padding: 0;
+    text-align: center;
+    display: inline-block;
+    border-bottom: none;
+}
+
+.exp-wrapper::after {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    content: '/';
+    font-size: var(--size-sm);
+    opacity: .5;
+}
+
+.form__input-fields .form__input-field label {
+    font-size: var(--size-xs);
+}
+
+.form__input-fields .form__input-field input {
+    font-size: var(--size-sm);
+}
+
+.card-holder {
+    width: 100%;
+}
+
+.exp-date {
+    width: 75%;
+}
+
+.cvv {
+    width: 50%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (max-width: 630px) {
+    html {
+        font-size: 50%;
+    }
+    .form__payment-methods img {
+        width: 120px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 468px) {
+    html {
+        font-size: 40%;
+    }
+    .form__payment-methods img {
+        width: 100px;
+        height: 70px;
+    }
+    .form__input-fields.exp-date {
+        flex-wrap: wrap;
+    }
+    #card-holder {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    html {
+        font-size: 35%;
+    }
+    .form__payment-methods img {
+        width: 80px;
+        height: 60px;
+    }
+}
+
+.error {
+    color: rgb(255,60,60);
+}
+.error {
+    color: rgb(255,60,60);
+    border-color: rgb(255,60,60);
+}
+
+.error::placeholder {
+    color: rgb(255,60,60);
 }

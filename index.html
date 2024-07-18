@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    <h1>Enter your card details</h1>
     <div class="container">
         <!-- should change .org to .com -->
         <form action="https://www.tikokart.org/api-sanalpos/gateway/pay3d">
             <div class="form__payment-methods">
-                <h1>Payment Method</h1>
                 <div class="payment-method">
                     <input type="radio" name="credit-card" id="visa" checked>
                     <label for="visa">
@@ -29,13 +29,32 @@
                     </label>
                 </div>          
             </div>
-            <div class="form__card-no">
-                <label for="card-no">Card Number</label>
-                <input id="card-no" name="card-no" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" 
-                autocomplete="cc-number" maxlength="19" 
-                placeholder="xxxx xxxx xxxx xxxx" required>
+            <div class="form__input-field">
+                <label class="" for="card-no">Card Number</label>
+                <input class="" id="card-no" placeholder="1234 1234 1234 1234" type="text" required maxlength="16" >
             </div>
+            <div class="form__input-fields">
+                <div class="form__input-field card-holder">
+                    <label for="card-holder">Card&nbsp;Holder</label>
+                    <input id="card-holder" placeholder="Your name" type="text" required>
+                </div>
+                <div class="form__input-field exp-date">
+                    <label for="expiry-date">Expiry&nbsp;Date</label>
+                    <!-- <input id="expiry-date" placeholder="MM/YY" type="datetime" required maxlength="5"> -->
+                    <div class="exp-wrapper">
+                        <input autocomplete="off" class="exp" id="month" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate required />
+                        <input autocomplete="off" class="exp" id="year" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate required />
+                    </div>
+                </div>
+                <div class="form__input-field cvv">
+                    <label for="cvv">CVV</label>
+                    <input id="cvv" placeholder="123" autocomplete="off" type="text" required maxlength="3">
+                </div>
+            </div>
+            <button id="submit" type="submit">Pay Now</button>
         </form>
     </div>
+
+    <script src="./scripts/script.js"></script>
 </body>
 </html>
